@@ -1,23 +1,25 @@
 'use strict';
 
-const mysql = require('mysql');
-const config = require(`${__dirname}/../helpers/config`);
+import mysql from 'mysql';
+import { db } from '../helpers/config';
 
-const db = mysql.createConnection({
-    host:        config.db.host,
-    user:        config.db.user,
-    password:    config.db.password,
-    database:    config.db.database,
-    charset:     config.db.charset,
-    dateStrings: config.db.dateStrings,
-    debug:       config.db.debug
+console.log(db);
+
+const database = mysql.createConnection({
+    host:        db.host,
+    user:        db.user,
+    password:    db.password,
+    database:    db.database,
+    charset:     db.charset,
+    dateStrings: db.dateStrings,
+    debug:       db.debug
 });
 
-db.connect(err => {
+database.connect(err => {
     if(err){
         throw err;
     }
     console.log('Base de datos conectada.');
 });
 
-module.exports = db;
+export default database;

@@ -1,6 +1,7 @@
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const express = require('express');
+import bodyParser from 'body-parser';
+import morgan from 'morgan';
+import express from 'express';
+import db from './api/database/connection';
 const app = express();
 
 app.use(bodyParser.json());
