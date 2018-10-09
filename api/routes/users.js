@@ -1,10 +1,10 @@
 'use strict';
 
 import express from 'express';
-import * as usersCtrl from '../controllers/usersCtrl';
+import * as usersController from '../controllers/usersController';
 
 const router = express.Router();
 
-router.post('/login', usersCtrl.login);
+router.post('/login', usersController.login);
 
 export default router;

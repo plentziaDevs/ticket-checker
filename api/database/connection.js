@@ -9,8 +9,7 @@ const database = mysql.createConnection({
     password:    db.password,
     database:    db.database,
     charset:     db.charset,
-    dateStrings: db.dateStrings,
-    debug:       db.debug
+    dateStrings: db.dateStrings
 });
 
 database.connect(err => {
