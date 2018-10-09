@@ -1,5 +1,4 @@
 .git
-.gitignore
 yarn.lock
 node_modules/
 api/helpers/config.js
