@@ -3,8 +3,6 @@
 import mysql from 'mysql';
 import { db } from '../helpers/config';
 
-console.log(db);
-
 const database = mysql.createConnection({
     host:        db.host,
     user:        db.user,

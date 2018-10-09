@@ -1,16 +1,17 @@
+'use strict'
+
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import express from 'express';
-import db from './api/database/connection';
+
+import { port } from './api/helpers/config';
+import usersRoutes from './api/routes/users';
+
 const app = express();
 
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
-app.get('/prueba', (req, res) => {
-    res.status(200).send({
-        prueba: 'to bien en el json'
-    });
-});
+app.use('/ticket-checker/auth', usersRoutes);
 
-app.listen('4444', () => console.log('to bien'));
+app.listen(port, () => console.log(`Servidor iniciado en el puerto ${port}`));
