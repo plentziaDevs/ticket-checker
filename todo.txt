@@ -1,0 +1,18 @@
+TICKET CHECKER - TODO LIST, LOGS, AND SUGESTIONS
+
+STEP 1 {
+    TODO: {
+        -- Registro de usuarios y compañias
+        -- Login de usuarios y compañias
+    }
+    SUGESTIONS: {
+        -- ¿Añadimos el campo activated a las compañias tambien?
+    }
+}
+
+STEP 2 {
+    TODO: {
+        -- Las compañias pueden crear ofertas
+        -- Los usuarios pueden suscribirse a las ofertas
+    }
+}

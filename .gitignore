@@ -1,5 +1,6 @@
 .git
-.gitignore
 yarn.lock
 node_modules/
 api/helpers/config.js
+.DS_store
+api/.DS_store
