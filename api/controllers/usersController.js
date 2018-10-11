@@ -22,7 +22,7 @@ export const login = (req, res) => {
             return res.status(401).send({
                 error: {
                     message: 'Error, usuario y/o contraseña desconocidos',
-                    err_code: err
+                    trace: err
                 }
             });
         }
@@ -35,7 +35,7 @@ export const login = (req, res) => {
                     return res.status(401).send({
                         error: {
                             message: 'Error, usuario y/o contraseña desconocidos',
-                            err_code: err2
+                            trace: err2
                         }
                     });
                 }
@@ -126,7 +126,8 @@ export const registry = (req, res) => {
 
         let newCustomer = {
             email: req.body.email,
-            password: encrypt(req.body.password)
+            password: encrypt(req.body.password),
+            activated: 1
         }
 
         let sql = `(SELECT email FROM customers WHERE email = ${conn.escape(newCustomer.email)})
@@ -139,7 +140,7 @@ export const registry = (req, res) => {
                 return res.status(401).send({
                     error: {
                         message: 'Error en la petición',
-                        err_code: err
+                        trace: err
                     }
                 });
             }
@@ -152,16 +153,15 @@ export const registry = (req, res) => {
                 });
             }
 
-            let sql = `INSERT INTO customers (email, password, created_at, activated)
-                       VALUES (${conn.escape(newCustomer.email)}, ${conn.escape(newCustomer.password)}, NOW(), 1)`;
+            let sql = 'INSERT INTO customers SET ?, created_at=NOW()';
 
-            conn.query(sql, (err, result) => {
+            conn.query(sql, newCustomer, (err, result) => {
 
                 if (err) {
                     return res.status(401).send({
                         error: {
                             message: 'Error al insertar al usuario',
-                            err_code: err
+                            trace: err
                         }
                     });
                 }
@@ -192,7 +192,8 @@ export const registry = (req, res) => {
             email: req.body.email,
             password: encrypt(req.body.password),
             telephone: req.body.telephone,
-            name: req.body.name
+            name: req.body.name,
+            activated: 1
         }
 
         let sql = `(SELECT email FROM customers WHERE email = ${conn.escape(newCompanie.email)})
@@ -205,7 +206,7 @@ export const registry = (req, res) => {
                 return res.status(401).send({
                     error: {
                         message: 'Error, ...',
-                        err_code: err
+                        trace: err
                     }
                 });
             }
@@ -218,17 +219,15 @@ export const registry = (req, res) => {
                 });
             }
 
-            let sql = `INSERT INTO companies (email, password, name, telephone, created_at, activated)
-                       VALUES (${conn.escape(newCompanie.email)}, ${conn.escape(newCompanie.password)},
-                       ${conn.escape(newCompanie.name)}, ${conn.escape(newCompanie.telephone)}, NOW(), 1)`;
+            let sql = 'INSERT INTO companies SET ?, created_at=NOW()';
 
-            conn.query(sql, (err, result) => {
+            conn.query(sql, newCompanie, (err, result) => {
 
                 if (err) {
                     return res.status(401).send({
                         error: {
                             message: 'Error al insertar la compañia',
-                            err_code: err
+                            trace: err
                         }
                     });
                 }
