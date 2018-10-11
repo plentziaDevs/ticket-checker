@@ -7,7 +7,7 @@ import { jsonwebtoken } from '../helpers/config';
 
 /**
  * @function login
- * @param {json} req 
+ * @param {json} req
  * @param {json} res
  * @param {json} err
  * @param {json} result
@@ -100,13 +100,13 @@ export const login = (req, res) => {
 
 /**
  * @function registry
- * @param {json} req 
+ * @param {json} req
  * @param {json} res
  * @param {json} err
  * @param {json} result
  */
 export const registry = (req, res) => {
-    
+
     if (req.body.role === undefined) return res.status(401).send({
         error: {
             message: 'Error, esta acción requiere de un role para ser ejecutada'
@@ -151,7 +151,7 @@ export const registry = (req, res) => {
                     }
                 });
             }
-            
+
             let sql = `INSERT INTO customers (email, password, created_at, activated)
                        VALUES (${conn.escape(newCustomer.email)}, ${conn.escape(newCustomer.password)}, NOW(), 1)`;
 
@@ -179,7 +179,7 @@ export const registry = (req, res) => {
     // if companie
     } else if (req.body.role === 'companie') {
 
-        if (req.body.email === undefined || req.body.password === undefined || 
+        if (req.body.email === undefined || req.body.password === undefined ||
             req.body.telephone === undefined || req.body.name === undefined) {
             return res.status(401).send({
                 error: {
