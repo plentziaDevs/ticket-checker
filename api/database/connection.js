@@ -1,5 +1,3 @@
-'use strict';
-
 import mysql from 'mysql';
 import { db } from '../helpers/config';
 

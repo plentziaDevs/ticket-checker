@@ -1,5 +1,3 @@
-'use strict';
-
 import conn from './connection';
 
 async function hola(){

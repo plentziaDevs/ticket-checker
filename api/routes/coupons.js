@@ -1,5 +1,3 @@
-'use strict';
-
 import express from 'express';
 import * as couponsController from '../controllers/couponsController';
 import verification from '../middlewares/check_token';

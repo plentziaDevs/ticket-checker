@@ -1,5 +1,3 @@
-'use strict';
-
 import jwt from 'jsonwebtoken';
 import { jsonwebtoken } from '../helpers/config';
 

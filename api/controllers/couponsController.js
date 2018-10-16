@@ -1,5 +1,3 @@
-'use strict';
-
 import conn from '../database/connection';
 
 export const create = (req, res) => {
